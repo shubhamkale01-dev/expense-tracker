@@ -38,7 +38,10 @@ function addTransactionDOM(transaction) {
 
   item.innerHTML = `
     ${transaction.text}
-    <span>${sign}₹${Math.abs(transaction.amount)}</span>
+    <span>
+      ${sign}₹${Math.abs(transaction.amount)}
+      <button onclick="removeTransaction(${transaction.id})" style="margin-left:10px;color:red;border:none;background:none;cursor:pointer;">❌</button>
+    </span>
   `;
 
   list.appendChild(item);
@@ -64,3 +67,10 @@ function updateValues() {
 }
 
 form.addEventListener("submit", addTransaction);
+
+function removeTransaction(id) {
+  transactions = transactions.filter(t => t.id !== id);
+  list.innerHTML = "";
+  transactions.forEach(addTransactionDOM);
+  updateValues();
+}
