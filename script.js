@@ -8,10 +8,13 @@ const amount = document.getElementById("amount");
 
 let transactions = [];
 
-form.addEventListener("submit", addTransaction);
-
 function addTransaction(e) {
   e.preventDefault();
+
+  if (text.value.trim() === "" || amount.value.trim() === "") {
+    alert("Please enter description and amount");
+    return;
+  }
 
   const transaction = {
     id: Date.now(),
@@ -44,11 +47,20 @@ function addTransactionDOM(transaction) {
 function updateValues() {
   const amounts = transactions.map(t => t.amount);
 
-  const total = amounts.reduce((acc, item) => acc + item, 0);
-  const incomeTotal = amounts.filter(item => item > 0).reduce((acc, item) => acc + item, 0);
-  const expenseTotal = amounts.filter(item => item < 0).reduce((acc, item) => acc + item, 0);
+  const total = amounts.reduce((acc, item) => acc + item, 0).toFixed(2);
+  const incomeTotal = amounts
+    .filter(item => item > 0)
+    .reduce((acc, item) => acc + item, 0)
+    .toFixed(2);
+
+  const expenseTotal = (
+    amounts.filter(item => item < 0)
+      .reduce((acc, item) => acc + item, 0) * -1
+  ).toFixed(2);
 
   balance.innerText = total;
   income.innerText = incomeTotal;
-  expense.innerText = Math.abs(expenseTotal);
+  expense.innerText = expenseTotal;
 }
+
+form.addEventListener("submit", addTransaction);
