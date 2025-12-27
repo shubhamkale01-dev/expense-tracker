@@ -29,6 +29,10 @@ This application helps users track income and expenses, calculate balance, and v
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript)
 ---
 
+## 🔥 GitHub Streak
+
+![GitHub Streak](https://streak-stats.demolab.com?user=shubhamkale01-dev&theme=dark)
+
 ## 📂 Project Structure
 expense-tracker/
 │── index.html
