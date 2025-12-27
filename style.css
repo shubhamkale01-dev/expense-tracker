@@ -80,3 +80,9 @@ li.plus {
 li.minus {
   border-right: 5px solid red;
 }
+li span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
